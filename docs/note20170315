@@ -1,0 +1,12 @@
+Problema principala in programare
+  e programarea multi-threading
+  
+  Solutia => non-blocking algorithms
+    vert.x - recomandat de Jacob Jenkov
+    
+Programarea
+  structureaza continutul memoriei
+    - instructiuni
+    - date
+      - structurale (obiecte, structuri - field-uri )
+      - de executie (pe stiva)
