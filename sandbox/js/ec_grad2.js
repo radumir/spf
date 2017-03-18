@@ -1,5 +1,9 @@
 function ec_grad2(a,b,c) {
-  if( a == 0 && b == 0 && c == 0 ) {
-    return "ecuatie nedeterminata!";
+  if( a == 0 ) {
+    if( b == 0 ) {
+      if( c == 0 ) {
+        return "ecuatie nedeterminata!";
+      }
+    }
   }
 }
