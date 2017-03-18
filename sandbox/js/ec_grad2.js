@@ -9,5 +9,10 @@ function ec_grad2(a,b,c) {
     } else {
       return -c/b;
     }
+  } else {
+    var delta = b*b - 4*a*c;
+    if( delta == 0 ) {
+      return -b/(2*a);
+    }
   }
 }

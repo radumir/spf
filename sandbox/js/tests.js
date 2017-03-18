@@ -11,5 +11,9 @@ QUnit.test("ecuatie imposibila", function(assert){
 });
 
 QUnit.test("ecuatie grad 1", function(assert){
-  assert.equal( ec_grad2(0,5,10), -2, "x =");
+  assert.equal( ec_grad2(0,5,10), -2);
+});
+
+QUnit.test("ecuatie de grad 2 cu o singura solutie", function(assert){
+  assert.equal( ec_grad2(1,2,1), -1);
 });
