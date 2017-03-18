@@ -17,6 +17,8 @@ function ec_grad2(a,b,c) {
       var x1 = (-b - Math.sqrt( delta ))/(2*a);
       var x2 = (-b + Math.sqrt( delta ))/(2*a);
       return [x1,x2];
+    } else {
+      return 'ecuatie de grad 2 cu solutii complexe!';    
     }
   }
 }

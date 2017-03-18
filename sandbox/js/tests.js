@@ -24,3 +24,7 @@ QUnit.test("ecuatie de grad 2 cu doua solutii", function(assert){
   assert.equal( result[1], 2 );
   //java: int a[] = {1,2};
 });
+
+QUnit.test("ecuatie de grad cu solutii complexe", function(assert){
+  assert.equal( ec_grad2(1,2,2), "ecuatie de grad 2 cu solutii complexe!" );
+});
