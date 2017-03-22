@@ -1,10 +1,47 @@
 var MindMapOptions = {
   width:800,
-  height:600
+  height:600,
+  font:'Helvetica',
+  fontSize:[36],
+  padding:[15],
+  outerBorder:20,
+  outerRadius:10
 };
 
 function setup(){
   createCanvas(MindMapOptions.width, MindMapOptions.height);
+  textFont(MindMapOptions.font);
+  conturSlide();
+}
+
+function conturSlide() {
+  stroke(2);
+  color(0);
+  var x0 = MindMapOptions.outerBorder;
+  var y0 = MindMapOptions.outerBorder;
+  var w = MindMapOptions.width - 2*MindMapOptions.outerBorder;
+  var h = MindMapOptions.height - 2*MindMapOptions.outerBorder;
+  rect(x0,y0,w,h,MindMapOptions.outerRadius);
+}
+
+function drawNode( node ) {
+  var cmmdList = [];
+  
+  if( !node.hasOwnProperty('x') ) {
+    node.x = MindMapOptions.width/2;
+    node.y = MindMapOptions.height/2;
+    node.typeIndex = 0;
+  }
+  textFont(MindMapOptions.font);
+  textSize(MindMapOptions.fontSize[node.typeIndex]);
+  var nodeTextWidth=textWidth(node.text);
+  var nodeWidth = nodeTextWidth + 2*MindMapOptions.padding[node.typeIndex];
+  var x0 = node.x - nodeWidth/2;
+  var y0 = node.y - MindMapOptions.fontSize[node.typeIndex]/2;
+  
+  cmmdList.push(['text',node.text,x0,y0]);
+  
+  return cmmdList;
 }
 
 function invokeDrawFunction( args ) {
@@ -28,10 +65,13 @@ function invokeDrawFunction( args ) {
   } else if( args.length == 9 ) {
     window[fName](args[1],args[2],args[3],args[4],args[5],args[6],args[7],args[8]);
   } else {
-    throw 'Prea multe argumente pentru invokeDrawFunction: ' + args.length + '!');
+    throw 'Prea multe argumente pentru invokeDrawFunction: ' + args.length + '!';
   }
 }
 
 function draw(){
-  invokeDrawFunction(['ellipse',50,50,80,80]);
+  var cmmds = drawNode( mindMap.slides[0].nodes[0] );
+  for( var i=0; i<cmmds.length; i++ ) {
+    invokeDrawFunction(cmmds[i]);
+  }
 }
