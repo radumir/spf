@@ -28,16 +28,20 @@ function conturSlide() {
 function drawNode( node, level = 0 ) {
   var cmmdList = [];
   
+  var gc = {};
+  gc.font = MindMapOptions.font;
+  gc.fontSize = MindMapOptions.fontSize[level];  
+  
   if( !node.hasOwnProperty('x') ) {
     node.x = MindMapOptions.width/2;
     node.y = MindMapOptions.height/2;
   }
-  textFont(MindMapOptions.font);
-  textSize(MindMapOptions.fontSize[level]);
+  textFont(gc.font);
+  textSize(gc.fontSize);
   var nodeTextWidth=textWidth(node.text);
   var nodeWidth = nodeTextWidth + 2*MindMapOptions.padding[level];
   var x0 = node.x - nodeWidth/2;
-  var y0 = node.y - MindMapOptions.fontSize[level]/2;
+  var y0 = node.y - gc.fontSize/2;
   
   cmmdList.push(['text',node.text,x0,y0]);
   
