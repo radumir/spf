@@ -30,7 +30,8 @@ function drawNode( node, level = 0 ) {
   
   var gc = {};
   gc.font = MindMapOptions.font;
-  gc.fontSize = MindMapOptions.fontSize[level];  
+  gc.fontSize = MindMapOptions.fontSize[level];
+  gc.padding = MindMapOptions.padding[level];
   
   if( !node.hasOwnProperty('x') ) {
     node.x = MindMapOptions.width/2;
@@ -38,8 +39,8 @@ function drawNode( node, level = 0 ) {
   }
   textFont(gc.font);
   textSize(gc.fontSize);
-  var nodeTextWidth=textWidth(node.text);
-  var nodeWidth = nodeTextWidth + 2*MindMapOptions.padding[level];
+  var nodeTextWidth = textWidth(node.text);
+  var nodeWidth = nodeTextWidth + 2*gc.padding;
   var x0 = node.x - nodeWidth/2;
   var y0 = node.y - gc.fontSize/2;
   
