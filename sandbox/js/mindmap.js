@@ -24,22 +24,21 @@ function conturSlide() {
   rect(x0,y0,w,h,MindMapOptions.outerRadius);
 }
 
-
-function drawNode( node, level = 0 ) {
-  var cmmdList = [];
-  
-  var gc = {};
+function nodeGraphicContext( gc = {}, level = 0 ) {
   gc.font = MindMapOptions.font;
   gc.fontSize = MindMapOptions.fontSize[level];
   gc.padding = MindMapOptions.padding[level];
   
-  if( !node.hasOwnProperty('x') ) {
+  if( !gc.hasOwnProperty('x') ) {
     gc.x = MindMapOptions.width/2;
     gc.y = MindMapOptions.height/2;
-  } else {
-    gc.x = node.x;
-    gc.y = node.y;
   }
+  return gc;
+}
+
+function drawNode( node, gc ) {
+  var cmmdList = [];
+  
   textFont(gc.font);
   textSize(gc.fontSize);
   var nodeTextWidth = textWidth(node.text);
@@ -78,7 +77,8 @@ function invokeDrawFunction( args ) {
 }
 
 function draw(){
-  var cmmds = drawNode( mindMap.slides[0].nodes[0] );
+  var node = mindMap.slides[0].nodes[0];
+  var cmmds = drawNode( node, nodeGraphicContext() );
   for( var i=0; i<cmmds.length; i++ ) {
     invokeDrawFunction(cmmds[i]);
   }
