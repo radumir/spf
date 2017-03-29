@@ -34,15 +34,18 @@ function drawNode( node, level = 0 ) {
   gc.padding = MindMapOptions.padding[level];
   
   if( !node.hasOwnProperty('x') ) {
-    node.x = MindMapOptions.width/2;
-    node.y = MindMapOptions.height/2;
+    gc.x = MindMapOptions.width/2;
+    gc.y = MindMapOptions.height/2;
+  } else {
+    gc.x = node.x;
+    gc.y = node.y;
   }
   textFont(gc.font);
   textSize(gc.fontSize);
   var nodeTextWidth = textWidth(node.text);
   var nodeWidth = nodeTextWidth + 2*gc.padding;
-  var x0 = node.x - nodeWidth/2;
-  var y0 = node.y - gc.fontSize/2;
+  var x0 = gc.x - nodeWidth/2;
+  var y0 = gc.y - gc.fontSize/2;
   
   cmmdList.push(['text',node.text,x0,y0]);
   
