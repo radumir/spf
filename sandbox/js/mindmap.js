@@ -24,20 +24,20 @@ function conturSlide() {
   rect(x0,y0,w,h,MindMapOptions.outerRadius);
 }
 
-function drawNode( node ) {
+
+function drawNode( node, level = 0 ) {
   var cmmdList = [];
   
   if( !node.hasOwnProperty('x') ) {
     node.x = MindMapOptions.width/2;
     node.y = MindMapOptions.height/2;
-    node.typeIndex = 0;
   }
   textFont(MindMapOptions.font);
-  textSize(MindMapOptions.fontSize[node.typeIndex]);
+  textSize(MindMapOptions.fontSize[level]);
   var nodeTextWidth=textWidth(node.text);
-  var nodeWidth = nodeTextWidth + 2*MindMapOptions.padding[node.typeIndex];
+  var nodeWidth = nodeTextWidth + 2*MindMapOptions.padding[level];
   var x0 = node.x - nodeWidth/2;
-  var y0 = node.y - MindMapOptions.fontSize[node.typeIndex]/2;
+  var y0 = node.y - MindMapOptions.fontSize[level]/2;
   
   cmmdList.push(['text',node.text,x0,y0]);
   
