@@ -4,6 +4,9 @@ var MindMapOptions = {
   font:'Helvetica',
   fontSize:[36],
   padding:[15],
+  radius:[20],
+  yShift:[43],
+  lineHeight:[10],
   outerBorder:20,
   outerRadius:10
 };
@@ -12,6 +15,7 @@ function setup(){
   createCanvas(MindMapOptions.width, MindMapOptions.height);
   textFont(MindMapOptions.font);
   conturSlide();
+  smooth(10);
 }
 
 function conturSlide() {
@@ -28,6 +32,9 @@ function nodeGraphicContext( gc = {}, level = 0 ) {
   gc.font = MindMapOptions.font;
   gc.fontSize = MindMapOptions.fontSize[level];
   gc.padding = MindMapOptions.padding[level];
+  gc.lineHeight = MindMapOptions.lineHeight[level];
+  gc.radius = MindMapOptions.radius[level];
+  gc.yShift = MindMapOptions.yShift[level];
   
   if( !gc.hasOwnProperty('x') ) {
     gc.x = MindMapOptions.width/2;
@@ -41,11 +48,15 @@ function drawNode( node, gc ) {
   
   textFont(gc.font);
   textSize(gc.fontSize);
+  
   var nodeTextWidth = textWidth(node.text);
   var nodeWidth = nodeTextWidth + 2*gc.padding;
-  var x0 = gc.x - nodeWidth/2;
-  var y0 = gc.y - gc.fontSize/2;
+
+  var x0 = gc.x - nodeTextWidth/2;
+  var y0 = gc.y + gc.lineHeight;
   
+  cmmdList.push(['rect',x0-gc.padding,y0-gc.yShift,
+    nodeTextWidth+2*gc.padding,gc.fontSize+2*gc.padding,gc.radius,gc.radius]);
   cmmdList.push(['text',node.text,x0,y0]);
   
   return cmmdList;
