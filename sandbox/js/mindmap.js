@@ -43,9 +43,7 @@ function nodeGraphicContext( gc = {}, level = 0 ) {
   return gc;
 }
 
-function drawNode( node, gc ) {
-  var cmmdList = [];
-  
+function drawNode( node, gc, cmmdList = [] ) {
   textFont(gc.font);
   textSize(gc.fontSize);
   
