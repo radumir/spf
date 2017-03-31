@@ -5,7 +5,7 @@ var MindMapOptions = {
   fontSize:[36,24],
   padding:[15,10],
   radius:[20,15],
-  yShift:[43,20],
+  yShift:[43,28],
   lineHeight:[10,7],
   outerBorder:20,
   outerRadius:10
