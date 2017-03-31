@@ -1,0 +1,14 @@
+Linkuri
+=======
+
+Librarie p5.js
+
+https://p5js.org/reference/
+
+Javascript
+==========
+
+array reference
+
+https://www.w3schools.com/jsref/jsref_obj_array.asp
+
