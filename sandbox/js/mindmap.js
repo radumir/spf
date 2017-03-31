@@ -16,6 +16,7 @@ function setup(){
   textFont(MindMapOptions.font);
   conturSlide();
   smooth(10);
+  noLoop();
 }
 
 function conturSlide() {
