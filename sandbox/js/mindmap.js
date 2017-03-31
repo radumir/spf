@@ -2,11 +2,11 @@ var MindMapOptions = {
   width:800,
   height:600,
   font:'Helvetica',
-  fontSize:[36,30],
-  padding:[15,15],
-  radius:[20,20],
-  yShift:[43,35],
-  lineHeight:[10,9],
+  fontSize:[36,24],
+  padding:[15,10],
+  radius:[20,15],
+  yShift:[43,20],
+  lineHeight:[10,7],
   outerBorder:20,
   outerRadius:10
 };
