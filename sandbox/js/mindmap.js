@@ -2,11 +2,11 @@ var MindMapOptions = {
   width:800,
   height:600,
   font:'Helvetica',
-  fontSize:[36],
-  padding:[15],
-  radius:[20],
-  yShift:[43],
-  lineHeight:[10],
+  fontSize:[36,30],
+  padding:[15,15],
+  radius:[20,20],
+  yShift:[43,35],
+  lineHeight:[10,9],
   outerBorder:20,
   outerRadius:10
 };
@@ -55,6 +55,8 @@ function drawNode( node, gc ) {
   var x0 = gc.x - nodeTextWidth/2;
   var y0 = gc.y + gc.lineHeight;
   
+  cmmdList.push(['textFont',gc.font]);
+  cmmdList.push(['textSize',gc.fontSize]);
   cmmdList.push(['rect',x0-gc.padding,y0-gc.yShift,
     nodeTextWidth+2*gc.padding,gc.fontSize+2*gc.padding,gc.radius,gc.radius]);
   cmmdList.push(['text',node.text,x0,y0]);
@@ -88,8 +90,8 @@ function invokeDrawFunction( args ) {
 }
 
 function draw(){
-  var node = mindMap.slides[0].nodes[0];
-  var cmmds = drawNode( node, nodeGraphicContext() );
+  var node = mindMap.nodes[0];
+  var cmmds = slide( node );
   for( var i=0; i<cmmds.length; i++ ) {
     invokeDrawFunction(cmmds[i]);
   }
