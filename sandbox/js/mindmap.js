@@ -11,6 +11,7 @@ var MindMapOptions = {
   outerRadius:10
 };
 
+//apelata de p5.js odata inaintea lui draw
 function setup(){
   createCanvas(MindMapOptions.width, MindMapOptions.height);
   textFont(MindMapOptions.font);
@@ -88,6 +89,7 @@ function invokeDrawFunction( args ) {
   }
 }
 
+//functie invocata de p5.js in care se face efectiv desenarea
 function draw(){
   var node = mindMap.nodes[0];
   var cmmds = slide( node );
