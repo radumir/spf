@@ -1,4 +1,4 @@
-var factorScalare = 2;
+var factorScalare = 2.5;
 var MindMapOptions = {
   width:800*factorScalare,
   height:600*factorScalare,
