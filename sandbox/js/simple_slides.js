@@ -63,9 +63,28 @@ function slide( node, gc = slideGc ) {
 
       var x0 = gc.x - nodeTextWidth/2;
       var y0 = gc.y + gc.lineHeight;
+
+      function theMouseIsOverTheNode(){
+        var result = true;
+        var x = x0 -gc.padding + margin;
+        var y = y0 -gc.yShift + slideGc.slideHeight/2;
+        
+        if( mouseX < x ) result = false;
+        if( mouseX > x + nodeWidth ) result = false;
+        if( mouseY < y ) result = false;
+        if( mouseY > y + nodeHeight ) result = false;
+        //console.log([x,x+nodeWidth,y,y+nodeHeight,mouseX,mouseY,result]);
+        return result;     
+      }
+
       cmmdList.push(['textFont',gc.font]);
       cmmdList.push(['textSize',gc.fontSize]);
-      cmmdList.push(['fill',highLightColor]);
+      if( theMouseIsOverTheNode() ) {
+        console.log("--hightlight");
+        cmmdList.push(['fill',highLightColor]);
+      } else {
+        cmmdList.push(['fill',backgroundColor]);
+      }
       cmmdList.push(['rect',x0-gc.padding,y0-gc.yShift,
         nodeWidth,nodeHeight,gc.radius,gc.radius]);
       cmmdList.push(['fill',nodeTextColor]);  
