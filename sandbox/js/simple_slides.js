@@ -4,6 +4,21 @@ var slideGc = {titleLeft:20*factorScalare,titleTop:10*factorScalare,titleBottom:
   outerBorder:20*factorScalare, outerRadius:10*factorScalare,
   slidePadding:20*factorScalare};
 
+function nodeGraphicContext( gc = {}, level = 0 ) {
+  gc.font = MindMapOptions.font;
+  gc.fontSize = MindMapOptions.fontSize[level];
+  gc.padding = MindMapOptions.padding[level];
+  gc.lineHeight = MindMapOptions.lineHeight[level];
+  gc.radius = MindMapOptions.radius[level];
+  gc.yShift = MindMapOptions.yShift[level];
+  
+  if( !gc.hasOwnProperty('x') ) {
+    gc.x = MindMapOptions.width/2;
+    gc.y = MindMapOptions.height/2;
+  }
+  return gc;
+}
+
 function slide( node, gc = slideGc ) {
   var out = [];
   
@@ -35,22 +50,6 @@ function slide( node, gc = slideGc ) {
   }
 
   function content() {
-
-    function nodeGraphicContext( gc = {}, level = 0 ) {
-      gc.font = MindMapOptions.font;
-      gc.fontSize = MindMapOptions.fontSize[level];
-      gc.padding = MindMapOptions.padding[level];
-      gc.lineHeight = MindMapOptions.lineHeight[level];
-      gc.radius = MindMapOptions.radius[level];
-      gc.yShift = MindMapOptions.yShift[level];
-      
-      if( !gc.hasOwnProperty('x') ) {
-        gc.x = MindMapOptions.width/2;
-        gc.y = MindMapOptions.height/2;
-      }
-      return gc;
-    }
-
     var gcLevel1 = nodeGraphicContext( slideGc, 1 );
 
     function drawNode( node, gc, cmmdList = [] ) {

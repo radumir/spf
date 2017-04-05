@@ -29,31 +29,6 @@ function setup(){
   noLoop();
 }
 
-function conturSlide() {
-  stroke(MindMapOptions.strokeWidth);
-  color(0);
-  var x0 = MindMapOptions.outerBorder;
-  var y0 = MindMapOptions.outerBorder;
-  var w = MindMapOptions.width - 2*MindMapOptions.outerBorder;
-  var h = MindMapOptions.height - 2*MindMapOptions.outerBorder;
-  rect(x0,y0,w,h,MindMapOptions.outerRadius);
-}
-
-function nodeGraphicContext( gc = {}, level = 0 ) {
-  gc.font = MindMapOptions.font;
-  gc.fontSize = MindMapOptions.fontSize[level];
-  gc.padding = MindMapOptions.padding[level];
-  gc.lineHeight = MindMapOptions.lineHeight[level];
-  gc.radius = MindMapOptions.radius[level];
-  gc.yShift = MindMapOptions.yShift[level];
-  
-  if( !gc.hasOwnProperty('x') ) {
-    gc.x = MindMapOptions.width/2;
-    gc.y = MindMapOptions.height/2;
-  }
-  return gc;
-}
-
 function invokeDrawFunction( args ) {
   var fName = args[0];
   if( args.length == 1 ) {
