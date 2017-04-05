@@ -51,6 +51,7 @@ function slide( node, gc = slideGc ) {
 
   function content() {
     var gcLevel1 = nodeGraphicContext( slideGc, 1 );
+    var margin = slideGc.outerBorder+slideGc.slidePadding; 
 
     function drawNode( node, gc, cmmdList = [] ) {
       textFont(gc.font);
@@ -58,15 +59,15 @@ function slide( node, gc = slideGc ) {
       
       var nodeTextWidth = textWidth(node.text);
       var nodeWidth = nodeTextWidth + 2*gc.padding;
+      var nodeHeight = gc.fontSize+2*gc.padding;
 
       var x0 = gc.x - nodeTextWidth/2;
       var y0 = gc.y + gc.lineHeight;
-      
       cmmdList.push(['textFont',gc.font]);
       cmmdList.push(['textSize',gc.fontSize]);
       cmmdList.push(['fill',highLightColor]);
       cmmdList.push(['rect',x0-gc.padding,y0-gc.yShift,
-        nodeTextWidth+2*gc.padding,gc.fontSize+2*gc.padding,gc.radius,gc.radius]);
+        nodeWidth,nodeHeight,gc.radius,gc.radius]);
       cmmdList.push(['fill',nodeTextColor]);  
       cmmdList.push(['text',node.text,x0,y0]);
       
@@ -88,7 +89,6 @@ function slide( node, gc = slideGc ) {
     }
   
     var w = findWidths();
-    var margin = slideGc.outerBorder+slideGc.slidePadding; 
 
     function interleaveSpace() {
       var usedSpace = 0;
