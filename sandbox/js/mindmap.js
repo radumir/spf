@@ -26,7 +26,7 @@ function setup(){
   backgroundColor=color(MindMapOptions.backgroundColor[0],MindMapOptions.backgroundColor[1],MindMapOptions.backgroundColor[2]);
   nodeTextColor=color(MindMapOptions.textColor[0],MindMapOptions.textColor[1],MindMapOptions.textColor[2]);
   smooth(10);
-  noLoop();
+  //noLoop();
 }
 
 function invokeDrawFunction( args ) {
