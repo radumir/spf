@@ -1,8 +1,8 @@
-var slideGc = {titleLeft:20,titleTop:10,titleBottom:40,
-  slideWidth:800, slideHeight:600,
-  slideBorderWidth:2, slideBorderColor:0,
-  outerBorder:20, outerRadius:10,
-  slidePadding:20};
+var slideGc = {titleLeft:20*factorScalare,titleTop:10*factorScalare,titleBottom:40*factorScalare,
+  slideWidth:800*factorScalare, slideHeight:600*factorScalare,
+  slideBorderWidth:2*factorScalare, slideBorderColor:0,
+  outerBorder:20*factorScalare, outerRadius:10*factorScalare,
+  slidePadding:20*factorScalare};
 
 function slide( node, gc = slideGc ) {
   var out = [];

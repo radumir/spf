@@ -1,14 +1,16 @@
+var factorScalare = 2;
 var MindMapOptions = {
-  width:800,
-  height:600,
+  width:800*factorScalare,
+  height:600*factorScalare,
   font:'Helvetica',
-  fontSize:[36,24],
-  padding:[15,10],
-  radius:[20,15],
-  yShift:[43,28],
-  lineHeight:[10,7],
-  outerBorder:20,
-  outerRadius:10
+  fontSize:[36*factorScalare,24*factorScalare],
+  padding:[15*factorScalare,10*factorScalare],
+  radius:[20*factorScalare,15*factorScalare],
+  yShift:[43*factorScalare,28*factorScalare],
+  lineHeight:[10*factorScalare,7*factorScalare],
+  outerBorder:20*factorScalare,
+  outerRadius:10*factorScalare,
+  strokeWidth:2*factorScalare
 };
 
 //apelata de p5.js odata inaintea lui draw
