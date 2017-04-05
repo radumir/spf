@@ -12,7 +12,8 @@ var MindMapOptions = {
   outerRadius:10*factorScalare,
   strokeWidth:2*factorScalare,
   highLightColor:[255,255,0],
-  textColor:[0,0,0]
+  textColor:[0,0,0],
+  backgroundColor:[255,255,255]
 };
 var highLightColor;
 var nodeTextColor;
@@ -22,6 +23,7 @@ function setup(){
   createCanvas(MindMapOptions.width, MindMapOptions.height);
   textFont(MindMapOptions.font);
   highLightColor=color(MindMapOptions.highLightColor[0],MindMapOptions.highLightColor[1],MindMapOptions.highLightColor[2]);
+  backgroundColor=color(MindMapOptions.backgroundColor[0],MindMapOptions.backgroundColor[1],MindMapOptions.backgroundColor[2]);
   nodeTextColor=color(MindMapOptions.textColor[0],MindMapOptions.textColor[1],MindMapOptions.textColor[2]);
   smooth(10);
   noLoop();
