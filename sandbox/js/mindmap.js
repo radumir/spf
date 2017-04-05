@@ -11,15 +11,18 @@ var MindMapOptions = {
   outerBorder:20*factorScalare,
   outerRadius:10*factorScalare,
   strokeWidth:2*factorScalare,
-  highLightColor:[255,255,0]
+  highLightColor:[255,255,0],
+  textColor:[0,0,0]
 };
 var highLightColor;
+var nodeTextColor;
 
 //apelata de p5.js odata inaintea lui draw
 function setup(){
   createCanvas(MindMapOptions.width, MindMapOptions.height);
   textFont(MindMapOptions.font);
   highLightColor=color(MindMapOptions.highLightColor[0],MindMapOptions.highLightColor[1],MindMapOptions.highLightColor[2]);
+  nodeTextColor=color(MindMapOptions.textColor[0],MindMapOptions.textColor[1],MindMapOptions.textColor[2]);
   smooth(10);
   noLoop();
 }
@@ -64,6 +67,7 @@ function drawNode( node, gc, cmmdList = [] ) {
   cmmdList.push(['fill',highLightColor]);
   cmmdList.push(['rect',x0-gc.padding,y0-gc.yShift,
     nodeTextWidth+2*gc.padding,gc.fontSize+2*gc.padding,gc.radius,gc.radius]);
+  cmmdList.push(['fill',nodeTextColor]);  
   cmmdList.push(['text',node.text,x0,y0]);
   
   return cmmdList;
