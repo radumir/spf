@@ -22,7 +22,7 @@ function setup(){
 }
 
 function conturSlide() {
-  stroke(2);
+  stroke(MindMapOptions.strokeWidth);
   color(0);
   var x0 = MindMapOptions.outerBorder;
   var y0 = MindMapOptions.outerBorder;
