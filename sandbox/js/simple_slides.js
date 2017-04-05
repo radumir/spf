@@ -35,7 +35,44 @@ function slide( node, gc = slideGc ) {
   }
 
   function content() {
+
+    function nodeGraphicContext( gc = {}, level = 0 ) {
+      gc.font = MindMapOptions.font;
+      gc.fontSize = MindMapOptions.fontSize[level];
+      gc.padding = MindMapOptions.padding[level];
+      gc.lineHeight = MindMapOptions.lineHeight[level];
+      gc.radius = MindMapOptions.radius[level];
+      gc.yShift = MindMapOptions.yShift[level];
+      
+      if( !gc.hasOwnProperty('x') ) {
+        gc.x = MindMapOptions.width/2;
+        gc.y = MindMapOptions.height/2;
+      }
+      return gc;
+    }
+
     var gcLevel1 = nodeGraphicContext( slideGc, 1 );
+
+    function drawNode( node, gc, cmmdList = [] ) {
+      textFont(gc.font);
+      textSize(gc.fontSize);
+      
+      var nodeTextWidth = textWidth(node.text);
+      var nodeWidth = nodeTextWidth + 2*gc.padding;
+
+      var x0 = gc.x - nodeTextWidth/2;
+      var y0 = gc.y + gc.lineHeight;
+      
+      cmmdList.push(['textFont',gc.font]);
+      cmmdList.push(['textSize',gc.fontSize]);
+      cmmdList.push(['fill',highLightColor]);
+      cmmdList.push(['rect',x0-gc.padding,y0-gc.yShift,
+        nodeTextWidth+2*gc.padding,gc.fontSize+2*gc.padding,gc.radius,gc.radius]);
+      cmmdList.push(['fill',nodeTextColor]);  
+      cmmdList.push(['text',node.text,x0,y0]);
+      
+      return cmmdList;
+    }
 
     function findWidths() {
       var widths = [];

@@ -52,27 +52,6 @@ function nodeGraphicContext( gc = {}, level = 0 ) {
   return gc;
 }
 
-function drawNode( node, gc, cmmdList = [] ) {
-  textFont(gc.font);
-  textSize(gc.fontSize);
-  
-  var nodeTextWidth = textWidth(node.text);
-  var nodeWidth = nodeTextWidth + 2*gc.padding;
-
-  var x0 = gc.x - nodeTextWidth/2;
-  var y0 = gc.y + gc.lineHeight;
-  
-  cmmdList.push(['textFont',gc.font]);
-  cmmdList.push(['textSize',gc.fontSize]);
-  cmmdList.push(['fill',highLightColor]);
-  cmmdList.push(['rect',x0-gc.padding,y0-gc.yShift,
-    nodeTextWidth+2*gc.padding,gc.fontSize+2*gc.padding,gc.radius,gc.radius]);
-  cmmdList.push(['fill',nodeTextColor]);  
-  cmmdList.push(['text',node.text,x0,y0]);
-  
-  return cmmdList;
-}
-
 function invokeDrawFunction( args ) {
   var fName = args[0];
   if( args.length == 1 ) {
