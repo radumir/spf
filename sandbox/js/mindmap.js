@@ -17,7 +17,6 @@ var MindMapOptions = {
 function setup(){
   createCanvas(MindMapOptions.width, MindMapOptions.height);
   textFont(MindMapOptions.font);
-  conturSlide();
   smooth(10);
   noLoop();
 }
