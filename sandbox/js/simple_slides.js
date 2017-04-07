@@ -55,7 +55,7 @@ function slide( node, gc = slideGc ) {
     var gcLevel1 = nodeGraphicContext( slideGc, 1 );
     var margin = slideGc.outerBorder+slideGc.slidePadding; 
 
-    function drawNode( node, gc, cmmdList = [] ) {
+    function drawNode( node, nodeKey, gc, cmmdList = [] ) {
       textFont(gc.font);
       textSize(gc.fontSize);
       
@@ -144,7 +144,7 @@ function slide( node, gc = slideGc ) {
       
       var node2key = c2.pop();
       var node2 = mindMap.nodes[node2key];
-      drawNode(node2 , gcLevel1, out );
+      drawNode(node2, node2key, gcLevel1, out );
     }
     out.push(['pop']);
   }
