@@ -64,3 +64,15 @@ function draw(){
     invokeDrawFunction(cmmds[i]);
   }
 }
+
+var isLooping = true;
+
+function keyPressed() {
+  if( isLooping ) {
+    noLoop();
+  } else {
+    loop();
+  }
+  isLooping = !isLooping;
+  return false;
+}
