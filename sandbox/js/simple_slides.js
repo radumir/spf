@@ -100,7 +100,8 @@ function slide( node, gc = slideGc ) {
       
       var c2 = JSON.parse(JSON.stringify( node.content ));
       while( c2.length > 0 ) {
-        var node2 = c2.pop();
+        var node2key = c2.pop();
+        var node2 = mindMap.nodes[node2key];
         widths.push( textWidth( node2.text ) + 2*gcLevel1.padding);        
       }
       
@@ -138,8 +139,10 @@ function slide( node, gc = slideGc ) {
     out.push(['translate',margin,slideGc.slideHeight/2]);
     while(c2.length > 0) {
       gcLevel1.x = xOffsetLevel1( L1idx++ );
-
-      drawNode( c2.pop(), gcLevel1, out );
+      
+      var node2key = c2.pop();
+      var node2 = mindMap.nodes[node2key];
+      drawNode(node2 , gcLevel1, out );
     }
     out.push(['pop']);
   }
