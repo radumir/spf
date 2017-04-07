@@ -76,3 +76,11 @@ function keyPressed() {
   isLooping = !isLooping;
   return false;
 }
+
+function mouseClicked() {
+  if (mindMap.hasOwnProperty('highLightedNode') ) {
+    mindMap.nodeKey = mindMap.highLightedNode;
+    delete(mindMap.highLightedNode);
+  }
+  return false;
+}
