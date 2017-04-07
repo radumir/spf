@@ -50,6 +50,8 @@ function slide( node, gc = slideGc ) {
   }
 
   function drawNodeContent() {
+    if( !node.hasOwnProperty('content')) return;
+  
     var gcLevel1 = nodeGraphicContext( slideGc, 1 );
     var margin = slideGc.outerBorder+slideGc.slidePadding; 
 
