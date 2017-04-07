@@ -49,7 +49,7 @@ function slide( node, gc = slideGc ) {
     out.push(['pop']);
   }
 
-  function content() {
+  function drawNodeContent() {
     var gcLevel1 = nodeGraphicContext( slideGc, 1 );
     var margin = slideGc.outerBorder+slideGc.slidePadding; 
 
@@ -146,7 +146,7 @@ function slide( node, gc = slideGc ) {
   
   conturSlide();
   title();
-  content();
+  drawNodeContent();
   
   console.log(JSON.stringify(out));
   return out;
