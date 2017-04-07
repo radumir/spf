@@ -54,9 +54,11 @@ function invokeDrawFunction( args ) {
   }
 }
 
+mindMap.nodeKey = 'n1';
+
 //functie invocata de p5.js in care se face efectiv desenarea
 function draw(){
-  var node = mindMap.nodes[0];
+  var node = mindMap.nodes[mindMap.nodeKey];
   var cmmds = slide( node );
   for( var i=0; i<cmmds.length; i++ ) {
     invokeDrawFunction(cmmds[i]);
