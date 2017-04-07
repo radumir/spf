@@ -82,7 +82,6 @@ function slide( node, gc = slideGc ) {
       cmmdList.push(['textFont',gc.font]);
       cmmdList.push(['textSize',gc.fontSize]);
       if( theMouseIsOverTheNode() ) {
-        console.log("--hightlight");
         cmmdList.push(['fill',highLightColor]);
       } else {
         cmmdList.push(['fill',backgroundColor]);
@@ -153,6 +152,5 @@ function slide( node, gc = slideGc ) {
   title();
   drawNodeContent();
   
-  console.log(JSON.stringify(out));
   return out;
 }
