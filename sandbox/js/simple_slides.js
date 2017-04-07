@@ -52,6 +52,8 @@ function slide( node, gc = slideGc ) {
   function drawNodeContent() {
     if( !node.hasOwnProperty('content')) return;
   
+    delete(mindMap.highLightedNode);
+
     var gcLevel1 = nodeGraphicContext( slideGc, 1 );
     var margin = slideGc.outerBorder+slideGc.slidePadding; 
 
