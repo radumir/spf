@@ -17,6 +17,8 @@ var MindMapOptions = {
 };
 var highLightColor;
 var nodeTextColor;
+var imageCounter = 0; 
+var backImg;
 
 //apelata de p5.js odata inaintea lui draw
 function setup(){
@@ -27,6 +29,9 @@ function setup(){
   nodeTextColor=color(MindMapOptions.textColor[0],MindMapOptions.textColor[1],MindMapOptions.textColor[2]);
   smooth(10);
   //noLoop();
+  backImg = loadImage('img/bB.png',function(img){
+    imageCounter++;
+  });
 }
 
 function invokeDrawFunction( args ) {
@@ -58,6 +63,10 @@ mindMap.nodeKey = 'n1';
 
 //functie invocata de p5.js in care se face efectiv desenarea
 function draw(){
+  if(imageCounter < 1 ) {
+    setTimeout( draw, 1000 );
+    return;
+  }
   var node = mindMap.nodes[mindMap.nodeKey];
   var cmmds = slide( node );
   for( var i=0; i<cmmds.length; i++ ) {
