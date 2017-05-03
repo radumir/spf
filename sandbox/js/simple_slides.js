@@ -39,6 +39,10 @@ function slide( node, gc = slideGc ) {
     
     out.push(['push']);
     out.push(['translate',gc.outerBorder+gc.slidePadding,gc.outerBorder+gc.slidePadding]);
+    if( mindMap.hasOwnProperty( 'parentKey' )) {
+      out.push(['image',backImg,0,-20,40,80]);
+      out.push(['translate',30,0]);
+    }
     out.push(['text',node.text,gc.titleLeft,gc.titleTop+gc.lineHeight]);
     
     out.push(['push']);
