@@ -91,6 +91,7 @@ function keyPressed() {
 
 function mouseClicked() {
   if (mindMap.hasOwnProperty('highLightedNode') ) {
+    mindMap.parentKey = mindMap.nodeKey;
     mindMap.nodeKey = mindMap.highLightedNode;
     delete(mindMap.highLightedNode);
   }
