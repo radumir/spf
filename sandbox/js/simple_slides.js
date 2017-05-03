@@ -34,12 +34,30 @@ function slide( node, gc = slideGc ) {
 
   function title() {
     var gc = nodeGraphicContext(slideGc,0);
+    var leftOffset = gc.outerBorder+gc.slidePadding;
+    var topOffset = gc.outerBorder+gc.slidePadding;
     out.push(['textFont',gc.font]);
     out.push(['textSize',gc.fontSize]);
     
     out.push(['push']);
-    out.push(['translate',gc.outerBorder+gc.slidePadding,gc.outerBorder+gc.slidePadding]);
+    out.push(['translate',leftOffset,topOffset]);
+    function theMouseIsOverTheArrow() {
+      if( mouseX < leftOffset ) return false;
+      if( mouseX > leftOffset + 40 ) return false;
+      if( mouseY < topOffset - 20 ) return false;
+      if( mouseY > topOffset + 60 ) return false;
+      return true;
+    }
     if( mindMap.hasOwnProperty( 'parentKey' )) {
+      out.push(['push']);
+      if( theMouseIsOverTheArrow() ) {
+        out.push(['fill',highLightColor]);
+      } else {
+        out.push(['fill',backgroundColor]);
+      }
+      out.push(['noStroke']);
+      out.push(['rect',0,-20,40,80]);
+      out.push(['pop']);
       out.push(['image',backImg,0,-20,40,80]);
       out.push(['translate',30,0]);
     }
