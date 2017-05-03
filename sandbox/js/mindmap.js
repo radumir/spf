@@ -62,6 +62,7 @@ function invokeDrawFunction( args ) {
 }
 
 mindMap.nodeKey = 'n1';
+mindMap.highLightedParent = false;
 
 //functie invocata de p5.js in care se face efectiv desenarea
 function draw(){
@@ -90,6 +91,12 @@ function keyPressed() {
 }
 
 function mouseClicked() {
+  if( mindMap.highLightedParent ) {
+    mindMap.nodeKey = mindMap.parentKey;
+    mindMap.highLightedParent=false;
+    delete(mindMap.parentKey);
+    return;
+  }
   if (mindMap.hasOwnProperty('highLightedNode') ) {
     mindMap.parentKey = mindMap.nodeKey;
     mindMap.nodeKey = mindMap.highLightedNode;

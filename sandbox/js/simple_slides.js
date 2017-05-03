@@ -42,10 +42,12 @@ function slide( node, gc = slideGc ) {
     out.push(['push']);
     out.push(['translate',leftOffset,topOffset]);
     function theMouseIsOverTheArrow() {
+      mindMap.highLightedParent = false;
       if( mouseX < leftOffset ) return false;
       if( mouseX > leftOffset + 40 ) return false;
       if( mouseY < topOffset - 20 ) return false;
       if( mouseY > topOffset + 60 ) return false;
+      mindMap.highLightedParent = true;
       return true;
     }
     if( mindMap.hasOwnProperty( 'parentKey' )) {
