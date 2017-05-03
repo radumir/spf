@@ -75,7 +75,6 @@ function draw(){
   for( var i=0; i<cmmds.length; i++ ) {
     invokeDrawFunction(cmmds[i]);
   }
-  image(backImg,100,100);
 }
 
 var isLooping = true;
