@@ -65,8 +65,8 @@ mindMap.nodeKey = 'n1';
 
 //functie invocata de p5.js in care se face efectiv desenarea
 function draw(){
+  setTimeout( draw, 500 );
   if(imageCounter < 1 ) {
-    setTimeout( draw, 1000 );
     return;
   }
   
