@@ -29,9 +29,11 @@ function setup(){
   nodeTextColor=color(MindMapOptions.textColor[0],MindMapOptions.textColor[1],MindMapOptions.textColor[2]);
   smooth(10);
   //noLoop();
-  backImg = loadImage('img/bB.png',function(img){
+  backImg = loadImage('img/back-arrow.png',function(img){
+    console.log('-- imagine incarcata');
     imageCounter++;
   });
+  noLoop();
 }
 
 function invokeDrawFunction( args ) {
@@ -67,11 +69,13 @@ function draw(){
     setTimeout( draw, 1000 );
     return;
   }
+  
   var node = mindMap.nodes[mindMap.nodeKey];
   var cmmds = slide( node );
   for( var i=0; i<cmmds.length; i++ ) {
     invokeDrawFunction(cmmds[i]);
   }
+  image(backImg,100,100);
 }
 
 var isLooping = true;
